@@ -9,9 +9,9 @@ boot.prototype = {
 	},
 	create: function(){
 		console.log("in create of boot.js");
-		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+//		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.pageAlignHorizontally = true;
-		this.scale.refresh();
+//		this.scale.refresh();
 		this.game.state.start("Preload");
 	}
 }

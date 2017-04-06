@@ -6,10 +6,12 @@ preload.prototype = {
 		var loadingBar = this.add.sprite(160,240,"loading");
 		loadingBar.anchor.setTo(0.5,0.5);
 		
-		this.game.load.spritesheet("Doge","assets/Doge_Sprite_Sheet.png",100,100);
-		console.log("Loaded Doge");
-		this.game.load.spritesheet("Jojo","assets/JotaroKid.png",100,100);
-		console.log("Loaded Doge");
+		this.game.load.spritesheet("Doge","assets/Doge_Sprite_Sheet.png",83,81,35);
+        console.log("Loaded DogeSprite")
+		this.game.load.spritesheet("Jojo","assets/JotaroKid.png",125,95,51);
+		console.log("Loaded JojoSprite");
+        this.game.load.image("background","assets/Background.jpg");
+        console.log("Loaded TitleBackground")
 		this.game.load.image("play","assets/play.png");
 		console.log("loaded play");
 		this.game.load.image("Platform","assets/platform.png");
