@@ -6,13 +6,13 @@ preload.prototype = {
 		var loadingBar = this.add.sprite(160,240,"loading");
 		loadingBar.anchor.setTo(0.5,0.5);
 		
-		this.game.load.spritesheet("numbers","assets/numbers.png",100,100);
+		this.game.load.image("stuff","assets/stuff.jpg");
 		console.log("loaded numbers");
 		this.game.load.image("gametitle","assets/gametitle.png");
 		console.log("loaded gametitle");
 		this.game.load.image("play","assets/play.png");
 		console.log("loaded play");
-		this.game.load.image("higher","assets/higher.png");
+		this.game.load.image("stuff2","assets/stuff2.png");
 		console.log("loaded higher");
 		this.game.load.image("lower","assets/lower.png");
 		console.log("loaded lower");

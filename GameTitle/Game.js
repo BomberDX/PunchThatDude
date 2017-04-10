@@ -1,56 +1,33 @@
-
-var theGame = function(game){
-	spriteNumber = null;
-	number = 0;
-	workingButtons = true;
-	higher = true;
-	score = 0;
+var theGame = function (game){
+    var cursors;
+    var stuff;
+    var speed = 6;
 }
 
 theGame.prototype = {
+    
 	create: function(){
-		number = Math.floor(Math.random()*10);
-		spriteNumber = this.game.add.sprite(160,240,"numbers");
-		spriteNumber.anchor.setTo(0.5,0.5);
-		spriteNumber.frame = number;
-		var higherButton = this.game.add.button(160,100,"higher",this.clickedHigher,this);
-		higherButton.anchor.setTo(0.5,0.5);
-		var lowerButton = this.game.add.button(160,380,"lower",this.clickedLower,this);
-		lowerButton.anchor.setTo(0.5,0.5);	
+        
+        this.stuff = this.game.add.sprite(this.game.world.centerX,this.game.world.centerY,"stuff");
+//        this.stuff.anchor.setTo(0.5,0.5);
+//        var stuff2 = this.game.add.sprite(60,60,"stuff2");
+//        stuff.anchor.setTo(0.5,0.5);
+        this.game.stage.backgroundColor = '#87CEEB';
+        this.cursors = this.game.input.keyboard.createCursorKeys();
+        
+//        this.wasd = {
+//        up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
+//        down: this.game.input.keyboard.addKey(Phaser.Keyboard.S),
+//        left: this.game.input.keyboard.addKey(Phaser.Keyboard.A),
+//        right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
+//        };
+//       
 	},
-	clickedHigher: function(){
-		higher = true;
-		this.tweenNumber(true);
-	},
-	clickedLower: function(){
-		higher = false;
-		this.tweenNumber(false);
-	},
-	tweenNumber: function(higher){
-		if(workingButtons){
-			workingButtons = false;
-			var exitTween = this.game.add.tween(spriteNumber);
-			exitTween.to({x:420},500);
-			exitTween.onComplete.add(this.exitNumber,this);
-			exitTween.start();
-		}
-	},
-	exitNumber: function(){
-		spriteNumber.x = -180;
-		spriteNumber.frame = Math.floor(Math.random()*10);
-		var enterTween = this.game.add.tween(spriteNumber);
-		enterTween.to({x:160},500);
-		enterTween.onComplete.add(this.enterNumber,this);
-		enterTween.start();
-	},
-	enterNumber: function(){
-		workingButtons = true;
-		if((higher && spriteNumber.frame < number) || (!higher && spriteNumber.frame>number)){
-			this.game.state.start("GameOver",true,false,score);
-		}
-		else {
-			score++;
-			number = spriteNumber.frame;
-		}
-	}
-}
+    update: function(){
+        if(this.cursors.right.isDown){
+//         if(this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+             console.log("right arrow pressed");
+            this.stuff.x += this.speed;
+        }
+    }
+};
