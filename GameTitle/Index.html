@@ -1,18 +1,22 @@
 <!DOOCTYPE HTML>
 <html>
     <head>
-        <title>Nicholas' Game</title>
+        <title>This is not Nicholas' Game</title>
         <script src="phaser.min.js"></script>
         <script src="Boot.js"></script>
         <script src="Preload.js"></script>
         <script src="GameTitle.js"></script>
         <script src="Game.js"></script>
         <script src="GameOver.js"></script>
-        
+        <link rel="stylesheet" type="text/css" href="GameStyles.css">
         
         <script>
             (function(){
+<<<<<<< HEAD
                 var game = new Phaser.Game(900, 600, Phaser.CANVAS, "game");
+=======
+                var game = new Phaser.Game(1200, 600, Phaser.CANVAS, "game");
+>>>>>>> origin/Sebas-Branch
                 game.state.add("Boot",boot);
                 game.state.add("Preload",preload);
                 game.state.add("GameTitle",gameTitle);
