@@ -16,10 +16,10 @@ preload.prototype = {
 		console.log("loaded play");
 		this.game.load.image("Platform","assets/platform.png");
 		console.log("loaded platform");
-		this.game.load.image("Cloudy","assets/CloudyBackground.png");
-		console.log("loaded lower");
 		this.game.load.image("gameover","assets/gameover.png");
 		console.log("loaded gameover");
+        this.game.load.image("FightBackG","assets/BattleBackground.gif");
+        console.log("loaded GameBackground");
 		this.load.setPreloadSprite(loadingBar);
 	},
 	create: function(){
