@@ -15,7 +15,9 @@ theGame.prototype = {
                 background.height=600;
                 background.width= 1200;
         gameDoge = this.game.add.sprite(250,430,"Doge");
+        gameDoge.anchor.setTo(0.5,0.5)
         gameJojo = this.game.add.sprite(950,430,"Jojo");
+        gameJojo.anchor.setTo(0.5,0.5)
 
         this.game.physics.enable(gameJojo);
         this.game.physics.enable(gameDoge);
@@ -31,19 +33,21 @@ theGame.prototype = {
     update:function() {
         
     if (cursors.up.isDown){
-        gameJojo.body.velocity.y = -5000;
+        gameJojo.body.velocity.y = -600;
         
     }
     else if(cursors.down.isDown) {
-        gameJojo.body.velocity.y = 5000;
+        gameJojo.body.velocity.y = 600;
 
     }
     else if(cursors.left.isDown) {
-        gameJojo.body.velocity.x = -5000;
+        gameJojo.scale.x*=-1;
+        gameJojo.body.velocity.x = -350;
 
     }
     else if(cursors.right.isDown) {
-        gameJojo.body.velocity.x = 5000;
+        gameJojo.scale.x*=-1;
+        gameJojo.body.velocity.x = 350;
     }
     else{
         gameJojo.body.velocity.x = 0;
