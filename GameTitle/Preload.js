@@ -17,7 +17,7 @@ preload.prototype = {
 		console.log("loaded platform");
 		this.game.load.image("gameover","assets/gameover.png");
 		console.log("loaded gameover");
-        this.game.load.image("FightBackG","assets/BattleBackground.gif");
+        this.game.load.spritesheet("FightBackG","assets/battleBackground.png");
         console.log("loaded GameBackground");
 		this.load.setPreloadSprite(loadingBar);
 	},
