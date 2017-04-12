@@ -5,7 +5,6 @@ preload.prototype = {
 		console.log("in preload of preload.js");
 		var loadingBar = this.add.sprite(160,240,"loading");
 		loadingBar.anchor.setTo(0.5,0.5);
-		
 		this.game.load.spritesheet("Doge","assets/Doge_Sprite_Sheet.png",83,81,35);
         console.log("Loaded DogeSprite")
 		this.game.load.spritesheet("Jojo","assets/JotaroKid.png",125,95,51);
