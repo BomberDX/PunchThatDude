@@ -1,0 +1,35 @@
+<!DOOCTYPE HTML>
+<html>
+    <head>
+        <title>This is not Nicholas' Game</title>
+        <script src="phaser.min.js"></script>
+        <script src="Boot.js"></script>
+        <script src="Preload.js"></script>
+        <script src="GameTitle.js"></script>
+        <script src="Game.js"></script>
+        <script src="GameOver.js"></script>
+        <link rel="stylesheet" type="text/css" href="GameStyles.css">
+        
+        <script>
+            (function(){
+                var game = new Phaser.Game(1200, 600, Phaser.CANVAS, "game");
+                game.state.add("Boot",boot);
+                game.state.add("Preload",preload);
+                game.state.add("GameTitle",gameTitle);
+                game.state.add("TheGame",theGame);
+                game.state.add("GameOver",gameOver);
+                
+                
+                game.state.start("Boot");
+            })();
+        </script>
+        
+        
+    </head>
+    
+    
+    <body>
+        <h1>Punch that dude</h1>
+        <p>Here is my game</p>
+    </body>
+</html>
