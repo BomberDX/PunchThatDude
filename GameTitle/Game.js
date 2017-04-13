@@ -13,7 +13,7 @@ theGame.prototype = {
     
 	create: function(){
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.game.world.setBounds(0,0,1200,600);
+        this.game.world.setBounds(0,0,1200,550);
         var background = this.game.add.sprite(0,0,"FightBackG");
         background.height=600;
         background.width= 1200;
@@ -60,12 +60,12 @@ theGame.prototype = {
         gameJojo.body.velocity.y = 600;
 
         }
-        else if(cursors.left.isDown) {
+        else if(this.cursors.left.isDown) {
             gameJojo.scale.x = -1;
             gameJojo.body.velocity.x = -350;
 
         }
-        else if(cursors.right.isDown) {
+        else if(this.cursors.right.isDown) {
             gameJojo.scale.x = 1;
             gameJojo.body.velocity.x = 350;
         }
