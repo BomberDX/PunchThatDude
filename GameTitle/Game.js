@@ -51,67 +51,35 @@ theGame.prototype = {
 
 	},
     update:function() {
-        
-    if (this.cursors.up.isDown){
-        gameJojo.body.velocity.y = -600;
+        listenForKeyPresses(gameJojo, this.cursors);
+        listenForKeyPresses(gameDoge, {
+            up: this.upKey,
+            down: this.downKey,
+            left: this.leftKey,
+            right: this.rightKey
+        });   
+    }
+}
+
+function listenForKeyPresses(gamePerson, cursors) {
+    if (cursors.up.isDown){
+        gamePerson.body.velocity.y = -600;
         
     }
-    else if(this.cursors.down.isDown) {
-        gameJojo.body.velocity.y = 600;
+    else if(cursors.down.isDown) {
+        gamePerson.body.velocity.y = 600;
 
         }
-        else if(this.cursors.left.isDown) {
-            gameJojo.scale.x = -1;
-            gameJojo.body.velocity.x = -350;
-
+        else if(cursors.left.isDown) {
+            gamePerson.scale.x = -1;
+            gamePerson.body.velocity.x = -350;
         }
-        else if(this.cursors.right.isDown) {
-            gameJojo.scale.x = 1;
-            gameJojo.body.velocity.x = 350;
+        else if(cursors.right.isDown) {
+            gamePerson.scale.x = 1;
+            gamePerson.body.velocity.x = 350;
         }
         else{
-            gameJojo.body.velocity.x = 0;
-            gameJojo.body.velocity.y = 0;
+            gamePerson.body.velocity.x = 0;
+            gamePerson.body.velocity.y = 0;
         }
-    //    if (cursors.W.isDown){
-    //        gameDoge.body.velocity.y = -100
-    //    }
-    //    else{
-    //        gameDoge.body.velocity.x = 0;
-    //        gameDoge.body.velocity.y = 0;
-    //    }
-        
-//        else {
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
-
-
-        if ( this.leftKey.isDown ){
-            gameDoge.body.velocity.x = -350;
-            gameDoge.scale.x = -1;
-        }
-        else if (this.rightKey.isDown){
-            gameDoge.body.velocity.x = 350;
-            gameDoge.scale.x = 1;
-        }
-        else if (this.upKey.isDown){
-            console.log("UP KEY PRESSED");
-            gameDoge.body.velocity.y = -600;
-            console.log(gameDoge.body.velocity.y);
-        }
-        else if ( this.downKey.isDown){
-            console.log("DOWN KEY PRESSED");
-            gameDoge.body.velocity.y = 600;
-            console.log(gameDoge.body.velocity.y);
-        }
-        else{
-            gameDoge.body.velocity.x = 0;
-            gameDoge.body.velocity.y = 0;
-        }
-//        else if(!downKey.justPressed() && !upKey.justPressed() && !rightKey.justPressed() && !leftKey.justPressed()){
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
-    }
 }
