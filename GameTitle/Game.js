@@ -60,12 +60,12 @@ theGame.prototype = {
         gameJojo.body.velocity.y = 600;
 
         }
-        else if(cursors.left.isDown) {
+        else if(this.cursors.left.isDown) {
             gameJojo.scale.x = -1;
             gameJojo.body.velocity.x = -350;
 
         }
-        else if(cursors.right.isDown) {
+        else if(this.cursors.right.isDown) {
             gameJojo.scale.x = 1;
             gameJojo.body.velocity.x = 350;
         }
@@ -97,7 +97,7 @@ theGame.prototype = {
         }
         else if (this.upKey.isDown){
             console.log("UP KEY PRESSED");
-            gameDoge.body.velocity.y = -600;
+            gameDoge.body.velocity.y = -600;    
             console.log(gameDoge.body.velocity.y);
         }
         else if ( this.downKey.isDown){
