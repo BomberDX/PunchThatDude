@@ -97,6 +97,7 @@ theGame.prototype = {
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         else if(cursors.left.isDown) {
             gamePerson.scale.x = -1;
             gamePerson.body.velocity.x = -350;
@@ -160,6 +161,13 @@ theGame.prototype = {
             gameDoge.body.velocity.y = -600;    
             console.log(gameDoge.body.velocity.y);
         }
+=======
+        else if (this.upKey.isDown){
+            console.log("UP KEY PRESSED");
+            gameDoge.body.velocity.y = -600;
+            console.log(gameDoge.body.velocity.y);
+        }
+>>>>>>> parent of 260b746... made stuff work totally me
         else if ( this.downKey.isDown){
             console.log("DOWN KEY PRESSED");
             gameDoge.body.velocity.y = 600;
@@ -169,6 +177,9 @@ theGame.prototype = {
             gameDoge.body.velocity.x = 0;
             gameDoge.body.velocity.y = 0;
         }
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 260b746... made stuff work totally me
 =======
 >>>>>>> parent of 260b746... made stuff work totally me
 //        else if(!downKey.justPressed() && !upKey.justPressed() && !rightKey.justPressed() && !leftKey.justPressed()){
@@ -177,7 +188,10 @@ theGame.prototype = {
 //        }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> parent of 260b746... made stuff work totally me
 =======
 >>>>>>> parent of 260b746... made stuff work totally me
 }
