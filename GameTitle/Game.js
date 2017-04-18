@@ -65,8 +65,13 @@ function listenForKeyPresses(gamePerson, cursors) {
     if (cursors.up.isDown){
         gamePerson.body.velocity.y = -600;
         
+        if (cursors.left.isDown){
+        }
+        if (cursors.right.isDown){
+        }
+        
     }
-    else if(cursors.down.isDown) {
+        else if(cursors.down.isDown) {
         gamePerson.body.velocity.y = 600;
 
         }
