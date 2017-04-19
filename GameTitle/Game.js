@@ -13,7 +13,7 @@ theGame.prototype = {
     
 	create: function(){
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.game.world.setBounds(0,0,1200,600);
+        this.game.world.setBounds(0,0,1200,550);
         var background = this.game.add.sprite(0,0,"FightBackG");
         background.height=600;
         background.width= 1200;
@@ -51,15 +51,34 @@ theGame.prototype = {
 
 	},
     update:function() {
-        
-    if (this.cursors.up.isDown){
-        gameJojo.body.velocity.y = -600;
+        listenForKeyPresses(gameJojo, this.cursors);
+        listenForKeyPresses(gameDoge, {
+            up: this.upKey,
+            down: this.downKey,
+            left: this.leftKey,
+            right: this.rightKey
+        });   
+    }
+}
+
+function listenForKeyPresses(gamePerson, cursors) {
+    if (cursors.up.isDown){
+        gamePerson.body.velocity.y = -600;
         
     }
-    else if(this.cursors.down.isDown) {
-        gameJojo.body.velocity.y = 600;
+    else if(cursors.down.isDown) {
+        gamePerson.body.velocity.y = 600;
 
         }
+<<<<<<< HEAD
+        else if(cursors.left.isDown) {
+            gamePerson.scale.x = -1;
+            gamePerson.body.velocity.x = -350;
+        }
+        else if(cursors.right.isDown) {
+            gamePerson.scale.x = 1;
+            gamePerson.body.velocity.x = 350;
+=======
         else if(this.cursors.left.isDown) {
             gameJojo.scale.x = -1;
             gameJojo.body.velocity.x = -350;
@@ -68,11 +87,14 @@ theGame.prototype = {
         else if(this.cursors.right.isDown) {
             gameJojo.scale.x = 1;
             gameJojo.body.velocity.x = 350;
+>>>>>>> master
         }
         else{
-            gameJojo.body.velocity.x = 0;
-            gameJojo.body.velocity.y = 0;
+            gamePerson.body.velocity.x = 0;
+            gamePerson.body.velocity.y = 0;
         }
+<<<<<<< HEAD
+=======
     //    if (cursors.W.isDown){
     //        gameDoge.body.velocity.y = -100
     //    }
@@ -114,4 +136,5 @@ theGame.prototype = {
 //            gameDoge.body.velocity.y = 0;
 //        }
     }
+>>>>>>> master
 }
