@@ -52,14 +52,18 @@ theGame.prototype = {
 	},
     update:function() {
         listenForKeyPresses(gameJojo, this.cursors);
+        
         listenForKeyPresses(gameDoge, {
             up: this.upKey,
             down: this.downKey,
             left: this.leftKey,
             right: this.rightKey
         });   
+        this.game.physics.arcade.collide(gameJojo, gameDoge)
     }
+    
 }
+
 
 function listenForKeyPresses(gamePerson, cursors) {
     if (cursors.up.isDown){
