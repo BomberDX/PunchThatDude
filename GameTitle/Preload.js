@@ -7,7 +7,7 @@ preload.prototype = {
 		loadingBar.anchor.setTo(0.5,0.5);
 		this.game.load.spritesheet("Doge","assets/Doge_Sprite_Sheet.png",83,81,35);
         console.log("Loaded DogeSprite")
-		this.game.load.spritesheet("Jojo","assets/JotaroKid1.png",125,95,51);
+		this.game.load.spritesheet("Jojo","assets/JotaroKid.png",125,95,51);
 		console.log("Loaded JojoSprite");
         this.game.load.image("background","assets/Background.jpg");
         console.log("Loaded TitleBackground")
@@ -20,6 +20,9 @@ preload.prototype = {
         this.game.load.spritesheet("FightBackG","assets/battleBackground.png");
         console.log("loaded GameBackground");
 		this.load.setPreloadSprite(loadingBar);
+        this.game.load.image("dogeWin","assets/p1.png");
+        this.game.load.image("jojoWin","assets/p2.png");
+     
 	},
 	create: function(){
 		console.log("Starting GameTitle");
