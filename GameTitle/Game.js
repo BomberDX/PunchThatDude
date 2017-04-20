@@ -13,7 +13,7 @@ theGame.prototype = {
     
 	create: function(){
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.game.world.setBounds(0,0,1200,600);
+        this.game.world.setBounds(0,0,1200,550);
         var background = this.game.add.sprite(0,0,"FightBackG");
         background.height=600;
         background.width= 1200;
@@ -51,6 +51,7 @@ theGame.prototype = {
 
 	},
     update:function() {
+<<<<<<< HEAD
         
     if (this.cursors.up.isDown && this.gameJojo.body.touching.down){
         gameJojo.body.velocity.y = -600;
@@ -114,4 +115,42 @@ theGame.prototype = {
 //            gameDoge.body.velocity.y = 0;
 //        }
     }
+=======
+        listenForKeyPresses(gameJojo, this.cursors);
+        listenForKeyPresses(gameDoge, {
+            up: this.upKey,
+            down: this.downKey,
+            left: this.leftKey,
+            right: this.rightKey
+        });   
+    }
+}
+
+function listenForKeyPresses(gamePerson, cursors) {
+    if (cursors.up.isDown){
+        gamePerson.body.velocity.y = -600;
+        
+        if (cursors.left.isDown){
+        }
+        if (cursors.right.isDown){
+        }
+        
+    }
+        else if(cursors.down.isDown) {
+        gamePerson.body.velocity.y = 600;
+
+        }
+        else if(cursors.left.isDown) {
+            gamePerson.scale.x = -1;
+            gamePerson.body.velocity.x = -350;
+        }
+        else if(cursors.right.isDown) {
+            gamePerson.scale.x = 1;
+            gamePerson.body.velocity.x = 350;
+        }
+        else{
+            gamePerson.body.velocity.x = 0;
+            gamePerson.body.velocity.y = 0;
+        }
+>>>>>>> Sebas-Branch
 }
