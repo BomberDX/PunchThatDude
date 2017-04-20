@@ -60,12 +60,12 @@ theGame.prototype = {
         gameJojo.body.velocity.y = 600;
 
         }
-        else if(cursors.left.isDown) {
+        else if(this.cursors.left.isDown) {
             gameJojo.scale.x = -1;
             gameJojo.body.velocity.x = -350;
 
         }
-        else if(cursors.right.isDown) {
+        else if(this.cursors.right.isDown) {
             gameJojo.scale.x = 1;
             gameJojo.body.velocity.x = 350;
         }
