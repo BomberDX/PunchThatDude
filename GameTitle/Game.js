@@ -18,10 +18,11 @@ theGame.prototype = {
         background.height=600;
         background.width= 1200;
         gameDoge = this.game.add.sprite(250,430,"Doge");
-        gameDoge.anchor.setTo(0.5,0.5)
+        gameDoge.anchor.setTo(0.5,0.5);
+        gameDoge.animations.add('walk', null, 30, true);
         gameJojo = this.game.add.sprite(950,430,"Jojo");
         gameJojo.anchor.setTo(0.5,0.5)
-        
+        gameJojo.animations.add('walk',[16,17,18,19,20,21], 10, true);
         this.game.physics.arcade.gravity.y = 100;
         
         this.game.physics.enable(gameJojo);
@@ -59,7 +60,7 @@ theGame.prototype = {
             left: this.leftKey,
             right: this.rightKey
         });   
-        this.game.physics.arcade.collide(gameJojo, gameDoge)
+        this.game.physics.arcade.collide(gameJojo, gameDoge);
     }
     
 }
@@ -80,14 +81,17 @@ function listenForKeyPresses(gamePerson, cursors) {
 
         }
         else if(cursors.left.isDown) {
+            gamePerson.animations.play('walk');
             gamePerson.scale.x = -1;
             gamePerson.body.velocity.x = -350;
         }
         else if(cursors.right.isDown) {
+            gamePerson.animations.play('walk');
             gamePerson.scale.x = 1;
             gamePerson.body.velocity.x = 350;
         }
         else{
+            gamePerson.animations.stop('walk',true);
             gamePerson.body.velocity.x = 0;
             gamePerson.body.velocity.y = 0;
         }

@@ -5,10 +5,11 @@ preload.prototype = {
 		console.log("in preload of preload.js");
 		var loadingBar = this.add.sprite(160,240,"loading");
 		loadingBar.anchor.setTo(0.5,0.5);
-		this.game.load.spritesheet("Doge","assets/Doge_Sprite_Sheet.png",83,81,35);
+		this.game.load.spritesheet("Doge","assets/Doge_Sprite_Sheet.png",81,81,9);
         console.log("Loaded DogeSprite")
-		this.game.load.spritesheet("Jojo","assets/JotaroKid1.png",125,95,51);
+		this.game.load.spritesheet("Jojo","assets/JotaroKid.png",119,87,27);
 		console.log("Loaded JojoSprite");
+        this.game.load.spritesheet("JojoRun","assets/JotaroKidRun.png",120,71,6)
         this.game.load.image("background","assets/Background.jpg");
         console.log("Loaded TitleBackground")
 		this.game.load.image("play","assets/play.png");
