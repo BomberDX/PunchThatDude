@@ -7,6 +7,10 @@ var theGame = function(game){
     var rightKey;
     var upKey;
     var downKey;
+    var p1_health;
+    p1_score = 3;
+    var p2_health;
+    p2_score = 3;
 }
 
 theGame.prototype = {
@@ -18,9 +22,35 @@ theGame.prototype = {
         background.height=600;
         background.width= 1200;
         gameDoge = this.game.add.sprite(250,430,"Doge");
-        gameDoge.anchor.setTo(0.5,0.5)
+        gameDoge.anchor.setTo(0.5,0.5);
+//        gameDoge.animations.add('walk', null, 30, true);
         gameJojo = this.game.add.sprite(950,430,"Jojo");
-        gameJojo.anchor.setTo(0.5,0.5)
+        gameJojo.anchor.setTo(0.5,0.5);
+//        gameJojo.animations.add('walk',[16,17,18,19,20,21], 10, true);
+//        hpbar = this.game.add.sprite(10,10,"HP");
+//        hpbar2 = this.game.add.sprite(40,10,"HP");
+        var text=this.game.add.text(10,10,"Player1 life:");
+        p1_health = this.game.add.group();
+        text.addColor("#ff0000",0);
+        console.log(p1_score);
+        var j = 385;
+        for(var i = 0; i < p1_score; i++){
+            console.log("creating group ", i)
+            p1_health.create(j+150, 10,'HP');
+            j = j + 150;
+        }
+        p1_health.scale.set(.3,.3);
+        
+        
+//        p2_health = this.game.add.group();
+//        console.log(p2_score);
+//        j = this.game.width;
+//        for(var i = 0; i < p2_score; i++){
+//            console.log("creating group ", i)
+//            p2_health.create(j, 10,'HP');
+//            j = j - 15;
+//        }
+//        p2_health.scale.set(.3,.3);
         
         this.game.physics.arcade.gravity.y = 100;
         
@@ -51,80 +81,19 @@ theGame.prototype = {
 
 	},
     update:function() {
-<<<<<<< HEAD
-        
-    if (this.cursors.up.isDown && this.gameJojo.body.touching.down){
-        gameJojo.body.velocity.y = -600;
-        
-    }
-    else if(this.cursors.down.isDown) {
-    gameJojo.body.velocity.y = 600;
-
-    }
-    else if(this.cursors.left.isDown) {
-        gameJojo.scale.x = -1;
-        gameJojo.body.velocity.x = -350;
-
-    }
-    else if(this.cursors.right.isDown) {
-        gameJojo.scale.x = 1;
-        gameJojo.body.velocity.x = 350;
-    }
-    else{
-        gameJojo.body.velocity.x = 0;
-        gameJojo.body.velocity.y = 0;
-    }
-//    if (cursors.W.isDown){
-//        gameDoge.body.velocity.y = -100
-//    }
-//    else{
-//        gameDoge.body.velocity.x = 0;
-//        gameDoge.body.velocity.y = 0;
-//    }
-
-//        else {
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
-
-
-    if ( this.leftKey.isDown ){
-        gameDoge.body.velocity.x = -350;
-        gameDoge.scale.x = -1;
-    }
-    else if (this.rightKey.isDown){
-        gameDoge.body.velocity.x = 350;
-        gameDoge.scale.x = 1;
-    }
-    else if (this.upKey.isDown){
-        console.log("UP KEY PRESSED");
-        gameDoge.body.velocity.y = -600;
-        console.log(gameDoge.body.velocity.y);
-    }
-    else if ( this.downKey.isDown){
-        console.log("DOWN KEY PRESSED");
-        gameDoge.body.velocity.y = 600;
-        console.log(gameDoge.body.velocity.y);
-    }
-    else{
-        gameDoge.body.velocity.x = 0;
-        gameDoge.body.velocity.y = 0;
-    }
-//        else if(!downKey.justPressed() && !upKey.justPressed() && !rightKey.justPressed() && !leftKey.justPressed()){
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
-    }
-=======
         listenForKeyPresses(gameJojo, this.cursors);
+        
         listenForKeyPresses(gameDoge, {
             up: this.upKey,
             down: this.downKey,
             left: this.leftKey,
             right: this.rightKey
         });   
+        this.game.physics.arcade.collide(gameJojo, gameDoge);
     }
+    
 }
+
 
 function listenForKeyPresses(gamePerson, cursors) {
     if (cursors.up.isDown){
@@ -141,16 +110,18 @@ function listenForKeyPresses(gamePerson, cursors) {
 
         }
         else if(cursors.left.isDown) {
+//            gamePerson.animations.play('walk');
             gamePerson.scale.x = -1;
             gamePerson.body.velocity.x = -350;
         }
         else if(cursors.right.isDown) {
+//            gamePerson.animations.play('walk');
             gamePerson.scale.x = 1;
             gamePerson.body.velocity.x = 350;
         }
         else{
+//            gamePerson.animations.stop('walk',true);
             gamePerson.body.velocity.x = 0;
             gamePerson.body.velocity.y = 0;
         }
->>>>>>> Sebas-Branch
 }

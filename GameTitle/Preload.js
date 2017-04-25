@@ -20,8 +20,8 @@ preload.prototype = {
         this.game.load.spritesheet("FightBackG","assets/battleBackground.png");
         console.log("loaded GameBackground");
 		this.load.setPreloadSprite(loadingBar);
-	    this.game.load.image("","assets/Jojowins.jpg")
-        console.log("loaded gameover")
+	    this.game.load.image("HP","assets/HP.png")
+        console.log("loaded ")
                        },
 	create: function(){
 		console.log("Starting GameTitle");
