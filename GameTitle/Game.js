@@ -1,5 +1,7 @@
 var theGame = function(game){
 	score = 0;
+    p1_wins = false;
+    p2_wins = true;
     var gameJojo;
     var gameDoge;
     var cursors;
@@ -129,4 +131,10 @@ function listenForKeyPresses(gamePerson, cursors) {
             gamePerson.body.acceleration.x = 0;
             gamePerson.body.acceleration.y = 0;
         }
+<<<<<<< HEAD
     }
+=======
+
+}
+
+>>>>>>> origin/master
