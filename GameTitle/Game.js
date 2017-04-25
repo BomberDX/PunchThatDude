@@ -7,6 +7,11 @@ var theGame = function(game){
     var rightKey;
     var upKey;
     var downKey;
+    gameDogeWins = true;
+    gameJojoWins = false;
+    gameDoge1 = 2;
+    gameJojo1 = 2;
+    
 }
 
 theGame.prototype = {
@@ -17,11 +22,17 @@ theGame.prototype = {
         var background = this.game.add.sprite(0,0,"FightBackG");
         background.height=600;
         background.width= 1200;
+        
         gameDoge = this.game.add.sprite(250,430,"Doge");
         gameDoge.anchor.setTo(0.5,0.5)
+        gameDoge.animations.add('walk', null, 30, true);
         gameJojo = this.game.add.sprite(950,430,"Jojo");
         gameJojo.anchor.setTo(0.5,0.5)
-        //this.game.physics.arcade.gravity.y = 100;
+        gameJojo.animations.add('walk', [16,17,18,19,20,21], 10, true);
+        
+        
+        
+        this.game.physics.arcade.gravity.y = 100;
         
         this.game.physics.enable(gameJojo);
         this.game.physics.enable(gameDoge);
@@ -29,6 +40,8 @@ theGame.prototype = {
         gameJojo.body.drag.x = 100
         gameDoge.body.collideWorldBounds = true;
         gameJojo.body.collideWorldBounds = true;
+        
+        
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.leftKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
@@ -63,68 +76,57 @@ theGame.prototype = {
             right: this.rightKey
         });   
         this.game.physics.arcade.collide(gameJojo, gameDoge)
+        
+//        game.physics.arcade.collide(gameJojo, gameDoge);
+        this.game.physics.arcade.collide(gameJojo, gameDoge, personHit);
     }
+}
+function personHit(gameJojo, gameDoge){
+    gameJojo.body.velocity.x > gameDoge.body.velocity.x
+    if (gameJojo.body.velocity.x > gameDoge.body.velocity.x){
+        gameDoge1 = gameDoge1 - 1;
+        console.log(gameDoge1);
+    }
+    if (gameJojo.body.velocity.x < gameDoge.body.velocity.x) {
+        gameJojo1 = gameJojo1 - 1;
+        console.log(gameJojo1);
+    }
+//    if(gameJojo1 === 0){
+////        gameJojo.kill();
+//        gameJojoWins = false;
+//        gameDogeWins = true;
+//        this.game.state.start("GameOver");
+//    }
+//    if(gameDoge1 === 0){
+////        gameDoge.kill();
+//        gameJojoWins = true;
+//        gameDogeWins = false;
+//        this.game.state.start("GameOver");
+//    }
 }
 
 function listenForKeyPresses(gamePerson, cursors) {
     if (cursors.up.isDown){
-        gamePerson.body.acceleration.y = -200
+        gamePerson.body.acceleration.y = -800
         //gamePerson.body.velocity.y = -600
     }
         else if(cursors.down.isDown) {
             //gamePerson.body.velocity.y = 600
-            gamePerson.body.acceleration.y = 200
+            gamePerson.body.acceleration.y = 800
         }
         else if(cursors.left.isDown) {
+            gamePerson.animations.play('walk');
             gamePerson.scale.x = -1;
-            gamePerson.body.acceleration.x = -200
+            gamePerson.body.acceleration.x = -800
         }
         else if(cursors.right.isDown) {
+            gamePerson.animations.play('walk');
             gamePerson.scale.x = 1;
-            gamePerson.body.acceleration.x = 200
+            gamePerson.body.acceleration.x = 800
         }
         else{
+            gamePerson.animations.stop('walk' ,true);
             gamePerson.body.acceleration.x = 0;
             gamePerson.body.acceleration.y = 0;
         }
-    //    if (cursors.W.isDown){
-    //        gameDoge.body.velocity.y = -100
-    //    }
-    //    else{
-    //        gameDoge.body.velocity.x = 0;
-    //        gameDoge.body.velocity.y = 0;
-    //    }
-        
-//        else {
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
-
-
-//        if (cursors.left.isDown){
-//            gameDoge.body.velocity.x = -350;
-//            gameDoge.scale.x = -1;
-//        }
-//        else if (cursors.right.isDown){
-//            gameDoge.body.velocity.x = 350;
-//            gameDoge.scale.x = 1;
-//        }
-//        else if (this.upKey.isDown){
-//            console.log("UP KEY PRESSED");
-//            gameDoge.body.velocity.y = -600;    
-//            console.log(gameDoge.body.velocity.y);
-//        }
-//        else if ( this.downKey.isDown){
-//            console.log("DOWN KEY PRESSED");
-//            gameDoge.body.velocity.y = 600;
-//            console.log(gameDoge.body.velocity.y);
-//        }
-//        else{
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
-//        else if(!downKey.justPressed() && !upKey.justPressed() && !rightKey.justPressed() && !leftKey.justPressed()){
-//            gameDoge.body.velocity.x = 0;
-//            gameDoge.body.velocity.y = 0;
-//        }
     }
