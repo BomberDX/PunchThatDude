@@ -41,16 +41,18 @@ theGame.prototype = {
         }
         p1_health.scale.set(.3,.3);
         
-        
-//        p2_health = this.game.add.group();
-//        console.log(p2_score);
-//        j = this.game.width;
-//        for(var i = 0; i < p2_score; i++){
-//            console.log("creating group ", i)
-//            p2_health.create(j, 10,'HP');
-//            j = j - 15;
-//        }
-//        p2_health.scale.set(.3,.3);
+        var text2=this.game.add.text(900,10,"Player2 life:");
+        text2.addColor("#ff0000",0);
+        p2_health = this.game.add.group();
+       console.log(p2_score);
+        j = 3800;
+        for(var i = 0; i < p2_score; i++){
+            console.log("creating group ", i)
+            console.log(j);
+            p2_health.create(j, 10,'HP');
+            j = j - 150;
+        }
+        p2_health.scale.set(.3,.3);
         
         this.game.physics.arcade.gravity.y = 100;
         
