@@ -32,7 +32,8 @@ gameOver.prototype = {
 		 
         if(p1_wins){
             winner=this.game.add.sprite(0,0,"dogeWin");
-        }else{
+        }
+        else{
             winner=this.game.add.sprite(0,0,"jojoWin");
         }
         

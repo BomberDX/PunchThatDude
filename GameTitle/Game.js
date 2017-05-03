@@ -84,6 +84,7 @@ theGame.prototype = {
 //this.timer.start();
 	},
     update:function() {
+        updateLives();
         listenForKeyPresses(gameJojo, this.cursors);
         listenForKeyPresses(gameDoge, {
             up: this.upKey,
@@ -92,17 +93,17 @@ theGame.prototype = {
             right: this.rightKey
         });   
         
-        this.game.physics.arcade.collide(gameJojo, gameDoge, personHit);
+        this.game.physics.arcade.collide(gameJojo, gameDoge, personHit,null,this);
     }
 }
 
 function updateLives(){
     
         this.p1_health.callAll('kill');
-        console.log(p1_score);
+//        console.log(p1_score);
         var j = 385;
         for(var i = 0; i < this.gameDoge1; i++){
-            console.log("creating group", i)
+//            console.log("creating group", i)
             p1_health.create(j+150, 10,'HP');
             j = j + 150;
         }
@@ -111,9 +112,9 @@ function updateLives(){
         this.p2_health.callAll('kill');
         console.log(p2_score);
         j = 3800;
-        for(var i = 0; i < gameJojo1; i++){
-            console.log("creating group", i)
-            console.log(j);
+        for(var i = 0; i < this.gameJojo1; i++){
+//            console.log("creating group", i)
+//            console.log(j);
             p2_health.create(j, 10,'HP');
             j = j - 150;
         }
@@ -121,13 +122,13 @@ function updateLives(){
 }
 
 function personHit(gameJojo, gameDoge){
-//    console.log("COLLISION");
+//    console.log("------!!!----COLLISION----!!!------");
 //    gameJojo.body.velocity.x > gameDoge.body.velocity.x
-    
     if (gameJojo.body.velocity.x > gameDoge.body.velocity.x){
 //        console.log(timer);
 //        if(this.timer > 3){
-            decreaseLife(gameDoge1);
+//        console.log("decrease gameDoge life");
+            decreaseLife(gameDoge);
 //            this.timer.restart();
 //        }
         
@@ -142,7 +143,8 @@ function personHit(gameJojo, gameDoge){
     }
     if (gameJojo.body.velocity.x < gameDoge.body.velocity.x) {
 //        if(Phaser.Timer.elapsedSince(3)){
-                decreaseLife(gameJojo1);
+//                console.log("decrease gameJojo life");
+                decreaseLife(gameJojo);
 //        }
 //        timer.loop(2000, decreaseLife(gameJojo1), this);
 //        gameJojo1 = gameJojo1 - 1;
@@ -150,37 +152,51 @@ function personHit(gameJojo, gameDoge){
     }
     if (gameJojo.body.velocity.y < gameDoge.body.velocity.y) {
 //        if(Phaser.Timer.elapsedSince(3)){
-                decreaseLife(gameJojo1);
+                decreaseLife(gameJojo);
 //        }
 //        timer.loop(2000, decreaseLife(gameJojo1), this);
 //        gameJojo1 = gameJojo1 - 1;
 //        console.log(gameJojo1);
     }
-        if (gameJojo.body.velocity.y < gameDoge.body.velocity.y) {
-//            timer.update(time.now);
-//            if(Phaser.Timer.elapsedSince(3)){
-                decreaseLife(gameDoge1);
+        if (gameJojo.body.velocity.y > gameDoge.body.velocity.y) {
+////            timer.update(time.now);
+////            if(Phaser.Timer.elapsedSince(3)){
+                decreaseLife(gameDoge);
 //            }
 //            timer.loop(2000, decreaseLife(gameDoge1), this);
 //        gameDoge1 = gameDoge1 - 1;
 //        console.log(gameDoge1);
     }
-//    if(gameJojo1 === 0){
-////        gameJojo.kill();
-//        gameJojoWins = false;
-//        gameDogeWins = true;
-//        this.game.state.start("GameOver");
-//    }
-//    if(gameDoge1 === 0){
-////        gameDoge.kill();
-//        gameJojoWins = true;
-//        gameDogeWins = false;
-//        this.game.state.start("GameOver");
-//    }
+    if(gameJojo1 === 0){
+//        gameJojo.kill();
+        gameJojoWins = false;
+        gameDogeWins = true;
+        this.game.state.start("GameOver");
+    }
+    if(gameDoge1 === 0){
+//        gameDoge.kill();
+        gameJojoWins = true;
+        gameDogeWins = false;
+        this.game.state.start("GameOver");
+    }
 }
-function decreaseLife(gamePersonLife){
-    gamePersonLife = gamePersonLife - 1;
-    console.log(gamePersonLife);
+
+function decreaseLife(gamePerson){
+    
+    if(gamePerson === gameDoge)
+        {
+            console.log("gamePerson == gameDoge");
+            gameDoge1 = gameDoge1 - 1;
+            console.log("Life: " + gameDoge1);
+        }
+    if(gamePerson === gameJojo)
+        {
+            console.log("gameperson == gameJojo");
+            gameJojo1 = gameJojo1 - 1;
+            console.log("Life: " + gameJojo1);
+        }
+//    gamePersonLife = gamePersonLife - 1;
+    //console.log("Life: " + gamePersonLife);
 }
 
 function listenForKeyPresses(gamePerson, cursors) {

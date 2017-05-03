@@ -10,7 +10,6 @@ preload.prototype = {
 
 		this.game.load.spritesheet("Jojo","assets/JotaroKid.png",119,87,27);
 
-
 		console.log("Loaded JojoSprite");
         this.game.load.spritesheet("JojoRun","assets/JotaroKidRun.png",120,71,6)
         this.game.load.image("background","assets/Background.jpg");
